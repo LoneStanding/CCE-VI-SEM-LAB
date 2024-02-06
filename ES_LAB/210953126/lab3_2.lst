@@ -1,0 +1,149 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0X10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             MYCODE, CODE, READONLY
+    8 00000000                 EXPORT           Reset_Handler
+    9 00000000                 ENTRY
+   10 00000000         Reset_Handler
+   11 00000000 F04F 0110       MOV              R1, #N1     ;
+   12 00000004 F04F 0220       MOV              R2, #N2     ;
+   13 00000008         UP
+   14 00000008 4291            CMP              R1, R2      ;
+   15 0000000A D008            BEQ              GCD
+   16 0000000C D203            BCS              DIV
+   17 0000000E 460C            MOV              R4, R1      ;
+   18 00000010 4611            MOV              R1, R2      ;
+   19 00000012 4622            MOV              R2, R4      ;
+   20 00000014 E7F8            B                UP
+   21 00000016         DIV
+   22 00000016 1A89            SUBS             R1, R2      ;
+   23 00000018 2900            CMP              R1, #0      ;
+   24 0000001A D000            BEQ              GCD
+   25 0000001C E7F4            B                UP
+   26 0000001E         GCD
+   27 0000001E 468A            MOV              R10, R1     ;
+   28 00000020         STOP
+   29 00000020 E7FE            B                STOP
+   30 00000022         
+   31 00000022 00000010 
+                       N1      EQU              16
+   32 00000022 00000020 
+                       N2      EQU              32
+   33 00000022                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=lab3_2.d
+ -olab3_2.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\In
+c\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=lab3_2.lst lab3_2.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file lab3_2.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file lab3_2.s
+   Uses
+      At line 2 in file lab3_2.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DIV 00000016
+
+Symbol: DIV
+   Definitions
+      At line 21 in file lab3_2.s
+   Uses
+      At line 16 in file lab3_2.s
+Comment: DIV used once
+GCD 0000001E
+
+Symbol: GCD
+   Definitions
+      At line 26 in file lab3_2.s
+   Uses
+      At line 15 in file lab3_2.s
+      At line 24 in file lab3_2.s
+
+MYCODE 00000000
+
+Symbol: MYCODE
+   Definitions
+      At line 7 in file lab3_2.s
+   Uses
+      None
+Comment: MYCODE unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 10 in file lab3_2.s
+   Uses
+      At line 5 in file lab3_2.s
+      At line 8 in file lab3_2.s
+
+STOP 00000020
+
+Symbol: STOP
+   Definitions
+      At line 28 in file lab3_2.s
+   Uses
+      At line 29 in file lab3_2.s
+Comment: STOP used once
+UP 00000008
+
+Symbol: UP
+   Definitions
+      At line 13 in file lab3_2.s
+   Uses
+      At line 20 in file lab3_2.s
+      At line 25 in file lab3_2.s
+
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+N1 00000010
+
+Symbol: N1
+   Definitions
+      At line 31 in file lab3_2.s
+   Uses
+      At line 11 in file lab3_2.s
+Comment: N1 used once
+N2 00000020
+
+Symbol: N2
+   Definitions
+      At line 32 in file lab3_2.s
+   Uses
+      At line 12 in file lab3_2.s
+Comment: N2 used once
+2 symbols
+341 symbols in table
