@@ -14,33 +14,37 @@ ARM Macro Assembler    Page 1
     8 00000000                 EXPORT           Reset_Handler
     9 00000000                 ENTRY
    10 00000000         Reset_Handler
-   11 00000000 F04F 0110       MOV              R1, #N1     ;
-   12 00000004 F04F 0220       MOV              R2, #N2     ;
-   13 00000008         UP
-   14 00000008 4291            CMP              R1, R2      ;
-   15 0000000A D008            BEQ              GCD
-   16 0000000C D203            BCS              DIV
-   17 0000000E 460C            MOV              R4, R1      ;
-   18 00000010 4611            MOV              R1, R2      ;
-   19 00000012 4622            MOV              R2, R4      ;
-   20 00000014 E7F8            B                UP
-   21 00000016         DIV
-   22 00000016 1A89            SUBS             R1, R2      ;
-   23 00000018 2900            CMP              R1, #0      ;
-   24 0000001A D000            BEQ              GCD
-   25 0000001C E7F4            B                UP
-   26 0000001E         GCD
-   27 0000001E 468A            MOV              R10, R1     ;
-   28 00000020         STOP
-   29 00000020 E7FE            B                STOP
-   30 00000022         
-   31 00000022 00000010 
+   11 00000000 F8DF A024       LDR              R10, =DST   ;
+   12 00000004 F04F 0110       MOV              R1, #N1     ;
+   13 00000008 F04F 0220       MOV              R2, #N2     ;
+   14 0000000C         UP
+   15 0000000C 4291            CMP              R1, R2      ;
+   16 0000000E D008            BEQ              GCD
+   17 00000010 D203            BCS              DIV
+   18 00000012 460C            MOV              R4, R1      ;
+   19 00000014 4611            MOV              R1, R2      ;
+   20 00000016 4622            MOV              R2, R4      ;
+   21 00000018 E7F8            B                UP
+   22 0000001A         DIV
+   23 0000001A 1A89            SUBS             R1, R2      ;
+   24 0000001C 2900            CMP              R1, #0      ;
+   25 0000001E D000            BEQ              GCD
+   26 00000020 E7F4            B                UP
+   27 00000022         GCD
+   28 00000022 F8CA 1000       STR              R1, [R10]   ;
+   29 00000026         STOP
+   30 00000026 E7FE            B                STOP
+   31 00000028         
+   32 00000028 00000010 
                        N1      EQU              16
-   32 00000022 00000020 
+   33 00000028 00000020 
                        N2      EQU              32
-   33 00000022                 END
+   34 00000028 00000000        AREA             dataseg, DATA, READWRITE
+   35 00000000 00000000 
+                       DST     DCD              0
+   36 00000004                 END
 Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=lab3_2.d
- -olab3_2.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\In
+ -olab3_2.o -ID:\Keil\ARM\RV31\INC -ID:\Keil\ARM\CMSIS\Include -ID:\Keil\ARM\In
 c\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=lab3_2.lst lab3_2.s
 
 
@@ -71,22 +75,22 @@ Comment: __Vectors used once
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 Relocatable symbols
 
-DIV 00000016
+DIV 0000001A
 
 Symbol: DIV
    Definitions
-      At line 21 in file lab3_2.s
+      At line 22 in file lab3_2.s
    Uses
-      At line 16 in file lab3_2.s
+      At line 17 in file lab3_2.s
 Comment: DIV used once
-GCD 0000001E
+GCD 00000022
 
 Symbol: GCD
    Definitions
-      At line 26 in file lab3_2.s
+      At line 27 in file lab3_2.s
    Uses
-      At line 15 in file lab3_2.s
-      At line 24 in file lab3_2.s
+      At line 16 in file lab3_2.s
+      At line 25 in file lab3_2.s
 
 MYCODE 00000000
 
@@ -105,24 +109,47 @@ Symbol: Reset_Handler
       At line 5 in file lab3_2.s
       At line 8 in file lab3_2.s
 
-STOP 00000020
+STOP 00000026
 
 Symbol: STOP
    Definitions
-      At line 28 in file lab3_2.s
-   Uses
       At line 29 in file lab3_2.s
+   Uses
+      At line 30 in file lab3_2.s
 Comment: STOP used once
-UP 00000008
+UP 0000000C
 
 Symbol: UP
    Definitions
-      At line 13 in file lab3_2.s
+      At line 14 in file lab3_2.s
    Uses
-      At line 20 in file lab3_2.s
-      At line 25 in file lab3_2.s
+      At line 21 in file lab3_2.s
+      At line 26 in file lab3_2.s
 
 6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DST 00000000
+
+Symbol: DST
+   Definitions
+      At line 35 in file lab3_2.s
+   Uses
+      At line 11 in file lab3_2.s
+Comment: DST used once
+dataseg 00000000
+
+Symbol: dataseg
+   Definitions
+      At line 34 in file lab3_2.s
+   Uses
+      None
+Comment: dataseg unused
+2 symbols
 
 
 
@@ -133,17 +160,17 @@ N1 00000010
 
 Symbol: N1
    Definitions
-      At line 31 in file lab3_2.s
+      At line 32 in file lab3_2.s
    Uses
-      At line 11 in file lab3_2.s
+      At line 12 in file lab3_2.s
 Comment: N1 used once
 N2 00000020
 
 Symbol: N2
    Definitions
-      At line 32 in file lab3_2.s
+      At line 33 in file lab3_2.s
    Uses
-      At line 12 in file lab3_2.s
+      At line 13 in file lab3_2.s
 Comment: N2 used once
 2 symbols
-341 symbols in table
+345 symbols in table

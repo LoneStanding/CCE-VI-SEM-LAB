@@ -392,9 +392,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>lab3_a2.s</FileName>
+              <FileName>lab3_3.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\lab3_a2.s</FilePath>
+              <FilePath>.\lab3_3.s</FilePath>
             </File>
           </Files>
         </Group>

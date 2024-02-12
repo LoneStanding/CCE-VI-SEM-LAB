@@ -168,7 +168,7 @@
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>0X00000006</ItemText>
+          <ItemText>0X10000000</ItemText>
         </Mm>
       </MemoryWindow1>
       <DebugFlag>
@@ -217,13 +217,13 @@
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>4</ColumnNumber>
+      <ColumnNumber>9</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>8</CurrentLine>
+      <TopLine>4</TopLine>
+      <CurrentLine>40</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\lab3_a2.s</PathWithFileName>
-      <FilenameWithoutPath>lab3_a2.s</FilenameWithoutPath>
+      <PathWithFileName>.\lab3_3.s</PathWithFileName>
+      <FilenameWithoutPath>lab3_3.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

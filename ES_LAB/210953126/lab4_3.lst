@@ -1,0 +1,175 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0X10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             MYCODE, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         Reset_Handler
+   11 00000000 480D            LDR              R0, =HEX    ;
+   12 00000002 6801            LDR              R1, [R0]    ;
+   13 00000004         UP
+   14 00000004 F000 F805       BL               DIV
+   15 00000008 2900            CMP              R1, #0      ;
+   16 0000000A D1FB            BNE              UP
+   17 0000000C 480B            LDR              R0, =BCD    ;
+   18 0000000E 6006            STR              R6, [R0]    ;
+   19 00000010         STOP
+   20 00000010 E7FE            B                STOP
+   21 00000012         DIV
+   22 00000012 F04F 0300       MOV              R3, #0      ;
+   23 00000016         DWN
+   24 00000016 290A            CMP              R1, #0XA    ;
+   25 00000018 D304            BLO              EXIT
+   26 0000001A F1A1 010A       SUB              R1, #0XA    ;
+   27 0000001E F103 0301       ADD              R3, #1      ;
+   28 00000022 E7F8            B                DWN
+   29 00000024         EXIT
+   30 00000024 FA01 F104       LSL              R1, R4      ;
+   31 00000028 EA46 0601       ORR              R6, R1      ;
+   32 0000002C F104 0404       ADD              R4, #4      ;
+   33 00000030 4619            MOV              R1, R3      ;
+   34 00000032 4770            BX               LR
+   35 00000034 000000FF 
+                       HEX     DCD              0XFF
+   36 00000038 00000000 
+              00000000         AREA             DATASEG, DATA, READWRITE
+   37 00000000 00000000 
+                       BCD     DCD              0
+   38 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=lab4_3.d
+ -olab4_3.o -ID:\Keil\ARM\RV31\INC -ID:\Keil\ARM\CMSIS\Include -ID:\Keil\ARM\In
+c\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=lab4_3.lst lab4_3.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file lab4_3.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file lab4_3.s
+   Uses
+      At line 2 in file lab4_3.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DIV 00000012
+
+Symbol: DIV
+   Definitions
+      At line 21 in file lab4_3.s
+   Uses
+      At line 14 in file lab4_3.s
+Comment: DIV used once
+DWN 00000016
+
+Symbol: DWN
+   Definitions
+      At line 23 in file lab4_3.s
+   Uses
+      At line 28 in file lab4_3.s
+Comment: DWN used once
+EXIT 00000024
+
+Symbol: EXIT
+   Definitions
+      At line 29 in file lab4_3.s
+   Uses
+      At line 25 in file lab4_3.s
+Comment: EXIT used once
+HEX 00000034
+
+Symbol: HEX
+   Definitions
+      At line 35 in file lab4_3.s
+   Uses
+      At line 11 in file lab4_3.s
+Comment: HEX used once
+MYCODE 00000000
+
+Symbol: MYCODE
+   Definitions
+      At line 7 in file lab4_3.s
+   Uses
+      None
+Comment: MYCODE unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 10 in file lab4_3.s
+   Uses
+      At line 5 in file lab4_3.s
+      At line 9 in file lab4_3.s
+
+STOP 00000010
+
+Symbol: STOP
+   Definitions
+      At line 19 in file lab4_3.s
+   Uses
+      At line 20 in file lab4_3.s
+Comment: STOP used once
+UP 00000004
+
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+Symbol: UP
+   Definitions
+      At line 13 in file lab4_3.s
+   Uses
+      At line 16 in file lab4_3.s
+Comment: UP used once
+8 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+BCD 00000000
+
+Symbol: BCD
+   Definitions
+      At line 37 in file lab4_3.s
+   Uses
+      At line 17 in file lab4_3.s
+Comment: BCD used once
+DATASEG 00000000
+
+Symbol: DATASEG
+   Definitions
+      At line 36 in file lab4_3.s
+   Uses
+      None
+Comment: DATASEG unused
+2 symbols
+345 symbols in table

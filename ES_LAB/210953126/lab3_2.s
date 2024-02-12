@@ -8,6 +8,7 @@ __Vectors
 	EXPORT Reset_Handler
 	ENTRY
 Reset_Handler
+	LDR R10, =DST;
 	MOV R1, #N1;
 	MOV R2, #N2;
 UP
@@ -24,10 +25,12 @@ DIV
 	BEQ GCD
 	B UP
 GCD
-	MOV R10, R1;
+	STR R1, [R10];
 STOP
 	B STOP
 
 N1 EQU 16
 N2 EQU 32
+	AREA dataseg, DATA, READWRITE
+DST DCD 0
 	END

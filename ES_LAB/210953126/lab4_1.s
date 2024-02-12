@@ -8,17 +8,29 @@ __Vectors
 	EXPORT Reset_Handler
 	ENTRY
 Reset_Handler
-	MOV R0, #N1;
-	MOV R1, #0X0F;
-	AND R1, R0;
-	CMP R1, #9;
-	BEQ UP
-	
+	LDR R0, =HEX;
+	LDR R5, =ASCII;
+	LDR R1, [R0];
 UP
-	ADD R1, #30;
-	LSL R2, R1, #8;
-	
+	CMP R1, #0;
+	BEQ STOP
+	MOV R2, R1;
+	AND R2, #0XF;
+	CMP R2, #9;
+	BHI SKIP
+	ADD R3, R2, #0X30;
+	B NXT
+SKIP
+	SUB R2, #0XA;
+	ADD R3, R2, #0X41;
+NXT 
+	STR R3, [R4], #0X4;
+	LSR R1, #0X4;
+	B UP
 STOP
+	STR R3, [R5];
 	B STOP
-N1 EQU 0X26
+HEX DCD 0X04
+	AREA dataseg, DATA, READWRITE
+ASCII DCD 0,0
 	END

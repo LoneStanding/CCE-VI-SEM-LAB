@@ -8,6 +8,7 @@ __Vectors
 	EXPORT Reset_Handler
 	ENTRY
 Reset_Handler
+	LDR R10, =DST;
 	MOV R5, #1;
 	MOV R0, #1;
 	MOV R3, #10;
@@ -16,6 +17,9 @@ UP
 	MLA R0, R0, R5, R1;
 	SUBS R3, #1;
 	BNE UP
+	STR R0, [R10];
 STOP
 	B STOP
+	AREA dataseg, DATA, READWRITE
+DST DCD 0
 	END

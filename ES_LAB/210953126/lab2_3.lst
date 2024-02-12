@@ -1,0 +1,163 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0X10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             MYCODE, CODE, READONLY
+    8 00000000                 EXPORT           Reset_Handler
+    9 00000000                 ENTRY
+   10 00000000         Reset_Handler
+   11 00000000 4815            LDR              R0, =SRC1   ;
+   12 00000002 4916            LDR              R1, =SRC2   ;
+   13 00000004 F04F 0204       MOV              R2, #4      ;
+   14 00000008 4B15            LDR              R3, =DST    ;
+   15 0000000A F04F 0800       MOV              R8, #0      ;
+   16 0000000E F118 0800       ADDS             R8, #0      ;
+   17 00000012         UP
+   18 00000012 F850 4B04       LDR              R4, [R0], #4 ;
+   19 00000016 F851 5B04       LDR              R5, [R1], #4 ;
+   20 0000001A 41AC            SBCS             R4, R5      ;
+   21 0000001C F843 4B04       STR              R4, [R3], #4 ;
+   22 00000020 F1A2 0201       SUB              R2, #1      ;
+   23 00000024 F092 0F00       TEQ              R2, #0      ;
+   24 00000028 D1F3            BNE              UP
+   25 0000002A F04F 0400       MOV              R4, #0      ;
+   26 0000002E F164 0400       SBC              R4, #0      ;
+   27 00000032 601C            STR              R4, [R3]    ;
+   28 00000034 480A            LDR              R0, =DST    ;
+   29 00000036         STOP
+   30 00000036 E7FE            B                STOP
+   31 00000038 21436587 
+              78563412 
+              00000000 
+              11111111 SRC1    DCD              0X21436587, 0X78563412, 0X0, 0X
+11111111
+   32 00000048 98103254 
+              21436587 
+              11111111 
+              00000000 SRC2    DCD              0X98103254, 0X21436587, 0X11111
+111, 0X0
+   33 00000058 00000000 
+              00000000 
+              00000000 
+              00000000         AREA             dataseg, DATA, READWRITE
+   34 00000000 00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 DST     DCD              0,0,0,0,0
+   35 00000014                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=lab2_3.d
+ -olab2_3.o -ID:\Keil\ARM\RV31\INC -ID:\Keil\ARM\CMSIS\Include -ID:\Keil\ARM\In
+c\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=lab2_3.lst lab2_3.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file lab2_3.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file lab2_3.s
+   Uses
+      At line 2 in file lab2_3.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MYCODE 00000000
+
+Symbol: MYCODE
+   Definitions
+      At line 7 in file lab2_3.s
+   Uses
+      None
+Comment: MYCODE unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 10 in file lab2_3.s
+   Uses
+      At line 5 in file lab2_3.s
+      At line 8 in file lab2_3.s
+
+SRC1 00000038
+
+Symbol: SRC1
+   Definitions
+      At line 31 in file lab2_3.s
+   Uses
+      At line 11 in file lab2_3.s
+Comment: SRC1 used once
+SRC2 00000048
+
+Symbol: SRC2
+   Definitions
+      At line 32 in file lab2_3.s
+   Uses
+      At line 12 in file lab2_3.s
+Comment: SRC2 used once
+STOP 00000036
+
+Symbol: STOP
+   Definitions
+      At line 29 in file lab2_3.s
+   Uses
+      At line 30 in file lab2_3.s
+Comment: STOP used once
+UP 00000012
+
+Symbol: UP
+   Definitions
+      At line 17 in file lab2_3.s
+   Uses
+      At line 24 in file lab2_3.s
+Comment: UP used once
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DST 00000000
+
+Symbol: DST
+   Definitions
+      At line 34 in file lab2_3.s
+   Uses
+      At line 14 in file lab2_3.s
+      At line 28 in file lab2_3.s
+
+dataseg 00000000
+
+Symbol: dataseg
+   Definitions
+      At line 33 in file lab2_3.s
+   Uses
+      None
+Comment: dataseg unused
+2 symbols
+343 symbols in table
