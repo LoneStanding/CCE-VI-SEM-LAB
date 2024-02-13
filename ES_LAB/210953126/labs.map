@@ -4,8 +4,8 @@ ARM Linker, 5.03 [Build 24] [MDK-ARM Lite]
 
 Section Cross References
 
-    lab4_3.o(RESET) refers to lab4_3.o(MYCODE) for Reset_Handler
-    lab4_3.o(MYCODE) refers to lab4_3.o(DATASEG) for BCD
+    lab5_22.o(RESET) refers to lab5_22.o(mycode) for Reset_Handler
+    lab5_22.o(mycode) refers to lab5_22.o(data1) for RESULT
 
 
 ==============================================================================
@@ -16,20 +16,20 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    RESET                                    0x00000000   Section        8  lab4_3.o(RESET)
-    lab4_3.s                                 0x00000000   Number         0  lab4_3.o ABSOLUTE
-    MYCODE                                   0x00000008   Section       64  lab4_3.o(MYCODE)
-    HEX                                      0x0000003c   Data           4  lab4_3.o(MYCODE)
-    DATASEG                                  0x10000000   Section        4  lab4_3.o(DATASEG)
-    BCD                                      0x10000000   Data           4  lab4_3.o(DATASEG)
+    RESET                                    0x00000000   Section        8  lab5_22.o(RESET)
+    lab5_22.s                                0x00000000   Number         0  lab5_22.o ABSOLUTE
+    mycode                                   0x00000008   Section      140  lab5_22.o(mycode)
+    LIST                                     0x00000060   Data          40  lab5_22.o(mycode)
+    data1                                    0x10000000   Section       20  lab5_22.o(data1)
+    RESULT                                   0x10000000   Data          20  lab5_22.o(data1)
 
     Global Symbols
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$EBA8$STANDARDLIB$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
-    __Vectors                                0x00000000   Data           0  lab4_3.o(RESET)
-    Reset_Handler                            0x00000009   Thumb Code     0  lab4_3.o(MYCODE)
+    __Vectors                                0x00000000   Data           0  lab5_22.o(RESET)
+    Reset_Handler                            0x00000009   Thumb Code     0  lab5_22.o(mycode)
 
 
 
@@ -39,24 +39,24 @@ Memory Map of the image
 
   Image Entry point : 0x00000009
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x0000004c, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x000000a8, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Base: 0x00000000, Size: 0x00000048, Max: 0xffffffff, ABSOLUTE)
-
-    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x00000000   0x00000008   Data   RO            1    RESET               lab4_3.o
-    0x00000008   0x00000040   Code   RO            2  * MYCODE              lab4_3.o
-
-
-    Execution Region ER_RW (Base: 0x10000000, Size: 0x00000004, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Base: 0x00000000, Size: 0x00000094, Max: 0xffffffff, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x10000000   0x00000004   Data   RW            3    DATASEG             lab4_3.o
+    0x00000000   0x00000008   Data   RO            1    RESET               lab5_22.o
+    0x00000008   0x0000008c   Code   RO            2  * mycode              lab5_22.o
 
 
-    Execution Region ER_ZI (Base: 0x10000004, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Base: 0x10000000, Size: 0x00000014, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x10000000   0x00000014   Data   RW            3    data1               lab5_22.o
+
+
+    Execution Region ER_ZI (Base: 0x10000014, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
@@ -68,10 +68,10 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-        64         12          8          4          0        240   lab4_3.o
+       140         52          8         20          0        248   lab5_22.o
 
     ----------------------------------------------------------------------
-        64         12          8          4          0        240   Object Totals
+       140         52          8         20          0        248   Object Totals
          0          0          0          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -86,15 +86,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-        64         12          8          4          0        240   Grand Totals
-        64         12          8          4          0        240   ELF Image Totals
-        64         12          8          4          0          0   ROM Totals
+       140         52          8         20          0        248   Grand Totals
+       140         52          8         20          0        248   ELF Image Totals
+       140         52          8         20          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                   72 (   0.07kB)
-    Total RW  Size (RW Data + ZI Data)                 4 (   0.00kB)
-    Total ROM Size (Code + RO Data + RW Data)         76 (   0.07kB)
+    Total RO  Size (Code + RO Data)                  148 (   0.14kB)
+    Total RW  Size (RW Data + ZI Data)                20 (   0.02kB)
+    Total ROM Size (Code + RO Data + RW Data)        168 (   0.16kB)
 
 ==============================================================================
 

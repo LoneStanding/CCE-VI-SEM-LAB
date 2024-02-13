@@ -1,0 +1,197 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         
+    4 00000000         __Vectors
+    5 00000000 10001000        DCD              0x10001000
+    6 00000004 00000000        DCD              Reset_Handler
+    7 00000008                 ALIGN
+    8 00000008                 AREA             mycode, code, readonly
+    9 00000000                 ENTRY
+   10 00000000                 EXPORT           Reset_Handler
+   11 00000000         Reset_Handler
+   12 00000000         
+   13 00000000 F04F 0400       mov              r4, #0
+   14 00000004 F04F 010A       mov              r1, #10
+   15 00000008 481D            ldr              r0, =list
+   16 0000000A 4A1E            ldr              r2, =result
+   17 0000000C         up
+   18 0000000C 5903            ldr              r3, [r0,r4]
+   19 0000000E 5113            str              r3, [r2,r4]
+   20 00000010 F104 0404       add              r4, #04
+   21 00000014 F1A1 0101       sub              r1,#01
+   22 00000018 2900            cmp              r1,#00
+   23 0000001A D8F7            bhi              up
+   24 0000001C         
+   25 0000001C 4819            ldr              r0, =result
+   26 0000001E F04F 030A       mov              r3, #10
+   27 00000022 4699            mov              r9, r3
+   28 00000024         
+   29 00000024         outer_loop
+   30 00000024 4605            mov              r5, r0
+   31 00000026 46A8            mov              r8, r5
+   32 00000028 461C            mov              r4, r3
+   33 0000002A         
+   34 0000002A         inner_loop
+   35 0000002A 682E            ldr              r6, [r5]
+   36 0000002C F8D8 7000       ldr              r7, [r8]
+   37 00000030 42BE            cmp              r6, r7
+   38 00000032         
+   39 00000032 BFB8 46A8       movlt            r8, r5
+   40 00000036         
+   41 00000036 F105 0504       add              r5, #4
+   42 0000003A 1E64            subs             r4, r4, #1
+   43 0000003C D1F5            bne              inner_loop
+   44 0000003E         
+   45 0000003E         
+   46 0000003E 6806            ldr              r6, [r0]
+   47 00000040 F8D8 7000       ldr              r7, [r8]
+   48 00000044 6007            str              r7, [r0]
+   49 00000046 F8C8 6000       str              r6, [r8]
+   50 0000004A         
+   51 0000004A F100 0004       add              r0, #4
+   52 0000004E F1A3 0301       sub              r3, #1
+   53 00000052 F1B9 0901       subs             r9, r9, #1
+   54 00000056 D1E5            bne              outer_loop
+   55 00000058         
+   56 00000058 00000010 
+              00000005 
+              00000033 
+              00000024 
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+              00000056 
+              00000077 
+              00000021 
+              00000004 
+              00000087 
+              00000001 list    DCD              0x10, 0x05, 0x33, 0x24, 0x56, 0
+x77, 0x21, 0x04, 0x87, 0x01
+   57 00000080 00000000 
+              00000000 
+              00000000         AREA             data1, data, readwrite
+   58 00000000 00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00    result  DCW              0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   59 00000014                 end
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=selectio
+nsort.d -oselectionsort.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -I
+C:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=selectionsort.ls
+t selectionsort.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file selectionsort.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 4 in file selectionsort.s
+   Uses
+      At line 2 in file selectionsort.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file selectionsort.s
+   Uses
+      At line 6 in file selectionsort.s
+      At line 10 in file selectionsort.s
+
+inner_loop 0000002A
+
+Symbol: inner_loop
+   Definitions
+      At line 34 in file selectionsort.s
+   Uses
+      At line 43 in file selectionsort.s
+Comment: inner_loop used once
+list 00000058
+
+Symbol: list
+   Definitions
+      At line 56 in file selectionsort.s
+   Uses
+      At line 15 in file selectionsort.s
+Comment: list used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 8 in file selectionsort.s
+   Uses
+      None
+Comment: mycode unused
+outer_loop 00000024
+
+Symbol: outer_loop
+   Definitions
+      At line 29 in file selectionsort.s
+   Uses
+      At line 54 in file selectionsort.s
+Comment: outer_loop used once
+up 0000000C
+
+Symbol: up
+   Definitions
+      At line 17 in file selectionsort.s
+   Uses
+      At line 23 in file selectionsort.s
+Comment: up used once
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+data1 00000000
+
+Symbol: data1
+   Definitions
+      At line 57 in file selectionsort.s
+   Uses
+      None
+Comment: data1 unused
+result 00000000
+
+Symbol: result
+   Definitions
+      At line 58 in file selectionsort.s
+   Uses
+      At line 16 in file selectionsort.s
+      At line 25 in file selectionsort.s
+
+2 symbols
+343 symbols in table

@@ -217,13 +217,13 @@
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>15</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>22</CurrentLine>
+      <CurrentLine>35</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\lab4_3.s</PathWithFileName>
-      <FilenameWithoutPath>lab4_3.s</FilenameWithoutPath>
+      <PathWithFileName>.\lab5_22.s</PathWithFileName>
+      <FilenameWithoutPath>lab5_22.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -46,7 +46,7 @@ ARM Macro Assembler    Page 1
                        BCD     DCD              0
    38 00000004                 END
 Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=lab4_3.d
- -olab4_3.o -ID:\Keil\ARM\RV31\INC -ID:\Keil\ARM\CMSIS\Include -ID:\Keil\ARM\In
+ -olab4_3.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\In
 c\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=lab4_3.lst lab4_3.s
 
 
